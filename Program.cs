@@ -6,8 +6,15 @@ namespace Test01
     {
         static void Main(string[] args)
         {
-            DateTime timeSystem = DateTime.Now;
-            System.Console.WriteLine("Datetime Now is :" + timeSystem);
+            
+            float width;
+            float height;
+            Console.Write("Enter width: ");
+            width = float.Parse(Console.ReadLine());
+            Console.Write("Enter height: ");
+            height = float.Parse(Console.ReadLine());
+            float area = width * height;
+            Console.WriteLine("Area is: " + area);
         }
     }
 }
