@@ -7,11 +7,9 @@ namespace Test01
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Enter your name: ");
-
-            string yourName = Console.ReadLine();
-
-            Console.WriteLine("Hello: " + yourName);
+            float USD;
+            USD = float.Parse(Console.ReadLine());
+            Console.WriteLine(USD * 23000);
         }
     }
 }
