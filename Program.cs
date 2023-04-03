@@ -6,27 +6,24 @@ namespace Test01
     {
         static void Main(string[] args)
         {
+            float weight, height;
+            Console.WriteLine("Please enter a height");
+            weight = float.Parse(Console.ReadLine());
 
-            Console.WriteLine("Linear Equation Resolver");
-            Console.WriteLine("Given a equation as 'a * x + b = 0', please enter constants:");
-            double a, b;
-            Console.Write("a: ");
-            a = Convert.ToDouble(Console.ReadLine());
-            Console.Write("b: ");
-            b = Convert.ToDouble(Console.ReadLine());
-            if(a==0)
-                if(b==0)
-                {
-                    Console.Write("The solution is all x!");
-                }
-                else
-                {
-                    Console.Write("Nod solution!");
-                }
+            height = float.Parse(Console.ReadLine());
+
+            float bmi;
+            bmi = weight / height;
+            bmi = (float)Math.Round(bmi, 1);
+            Console.Write("BMI: " + bmi);
+            if (bmi < 18.5)
+                Console.WriteLine(" Underweight");
+            else if (18.5 <= bmi && bmi < 25)
+                Console.WriteLine(" Normal");
+            else if (25 <= bmi && bmi < 30)
+                Console.WriteLine(" Overweight");
             else
-            {
-                Console.Write("The solution is: {0}!", -b/a);
-            }
+                Console.WriteLine(" Obese");
         }
     }
 }
