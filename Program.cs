@@ -6,15 +6,12 @@ namespace Test01
     {
         static void Main(string[] args)
         {
-            
-            float width;
-            float height;
-            Console.Write("Enter width: ");
-            width = float.Parse(Console.ReadLine());
-            Console.Write("Enter height: ");
-            height = float.Parse(Console.ReadLine());
-            float area = width * height;
-            Console.WriteLine("Area is: " + area);
+
+            Console.WriteLine("Enter your name: ");
+
+            string yourName = Console.ReadLine();
+
+            Console.WriteLine("Hello: " + yourName);
         }
     }
 }
