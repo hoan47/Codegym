@@ -6,70 +6,27 @@ namespace Test01
     {
         static void Main(string[] args)
         {
-            string[,] map = {
-            {"*", ".", ".", "."},
-            {".", ".", ".", "."},
-            {".", "*", ".", "."},
-            {".", ".", ".", "."}
-        };
-            int MAP_HEIGHT = map.GetLength(0);
-            int MAP_WIDTH = map.GetLength(1);
-
-            string[,] mapReport = new string[MAP_HEIGHT, MAP_WIDTH];
-            for (int yOrdinate = 0; yOrdinate < MAP_HEIGHT; yOrdinate++)
+            int m = int.Parse(Console.ReadLine());
+            int[] a = new int[m];
+            string[] s = Console.ReadLine().Split(' ');
+            for (int i = 0; i < m; i++)
             {
-                for (int xOrdinate = 0; xOrdinate < map.GetLength(0); xOrdinate++)
-                {
-                    string curentCell = map[yOrdinate, xOrdinate];
-                    if (curentCell.Equals("*"))
-                    {
-                        mapReport[yOrdinate, xOrdinate] = "*";
-                    }
-                    else
-                    {
-                        int[,] NEIGHBOURS_ORDINATE = {
-                        {yOrdinate - 1, xOrdinate - 1}, {yOrdinate - 1, xOrdinate}, {yOrdinate - 1, xOrdinate + 1},
-                        {yOrdinate, xOrdinate - 1}, {yOrdinate, xOrdinate + 1},
-                        {yOrdinate + 1, xOrdinate - 1}, {yOrdinate + 1, xOrdinate}, {yOrdinate + 1, xOrdinate + 1},};
-
-                        int minesAround = 0;
-                        int length = NEIGHBOURS_ORDINATE.GetLength(0);
-                        for (int i = 0; i < length; i++)
-                        {
-                            int xOrdinateOfNeighbour = NEIGHBOURS_ORDINATE[i, 1];
-                            int yOrdinateOfNeighbour = NEIGHBOURS_ORDINATE[i, 0];
-
-                            bool isOutOfMapNeighbour = xOrdinateOfNeighbour < 0
-                                    || xOrdinateOfNeighbour == MAP_WIDTH
-                                    || yOrdinateOfNeighbour < 0
-                                    || yOrdinateOfNeighbour == MAP_HEIGHT;
-                            if (isOutOfMapNeighbour)
-                            {
-                                continue;
-                            }
-
-                            bool isMineOwnerNeighbour = map[yOrdinateOfNeighbour, xOrdinateOfNeighbour].Equals("*");
-                            if (isMineOwnerNeighbour)
-                            {
-                                minesAround++;
-                            }
-                        }
-
-                        mapReport[yOrdinate, xOrdinate] = minesAround.ToString();
-                    }
-                }
+                a[i] = int.Parse(s[i]);
             }
-
-            for (int yOrdinate = 0; yOrdinate < MAP_HEIGHT; yOrdinate++)
+            int X = int.Parse(Console.ReadLine());
+            int index = int.Parse(Console.ReadLine());
+            if(index<=1 || a.Length-1<=index)
             {
-                Console.WriteLine("\n");
-                for (int xOrdinate = 0; xOrdinate < MAP_WIDTH; xOrdinate++)
-                {
-                    String currentCellReport = mapReport[yOrdinate, xOrdinate];
-                    Console.Write(currentCellReport);
-                }
-            }
-            Console.ReadLine();
+                Console.WriteLine("Khong chen duoc");
+                return;
+            }    
+            Array.Resize(ref a, a.Length + 1);
+            Array.Copy(a, index, a, index + 1, a.Length - 1 - index);
+            a[index] = X;
+            for (int i = 0; i < a.Length; i++) 
+            {
+                Console.Write($"{a[i]} ");
+            }   
         }
     }
 }
