@@ -6,22 +6,20 @@ namespace Test01
     {
         static void Main(string[] args)
         {
-            int m, n, max;
-            max = int.MinValue;
+            int m, S = 0;
             m = int.Parse(Console.ReadLine());
-            n = int.Parse(Console.ReadLine());
-            int[,] a = new int[m, n];
+            int[,] a = new int[m, m];
             for(int i=0; i<m; i++)
             {
                 string[] s = Console.ReadLine().Split(' ');
-                for(int j=0; j<n; j++)
+                for(int j=0; j<m; j++)
                 {
                     a[i, j] = int.Parse(s[j]);
-                    if (a[i, j] > max)
-                        max = a[i, j];
                 }
             }
-            Console.WriteLine(max);
+            for (int i = 0, j = 0; i < m; i++, j++)
+                S += a[i, j];
+            Console.WriteLine(S);
         }
     }
 }
